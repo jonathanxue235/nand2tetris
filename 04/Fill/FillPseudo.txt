@@ -1,0 +1,22 @@
+LOOP:
+i = 0
+addr = SCREEN
+if KBD = 0: JMP Set0
+JMP Set1
+
+SET1:
+val = -1
+JMP SCREENLOOP
+
+SET0:
+val = 0
+JMP SCREENLOOP
+
+SCREENLOOP:
+if i = 8192: JMP LOOP
+
+RAM[addr] = val;
+i = i + 1
+addr = addr + i
+
+JMP SCREENLOOP
